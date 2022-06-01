@@ -7,8 +7,9 @@ import webbrowser
 class kalkulator_aplikacija(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        self.update_idletasks()
+        self.eval('tk::PlaceWindow . center')
         self.title('ELO raiting kalkulator')
+        self.resizable(False, False)
 
         #notebook
         self.kalkulator = ttk.Notebook(self)
@@ -16,8 +17,7 @@ class kalkulator_aplikacija(tk.Tk):
         elo_kalkulator = ELO(self.kalkulator)
         self.kalkulator.add(elo_kalkulator, text='Elo raiting kalkulator')
         #self.kalkulator.add(self.predstavitev, text='predstavitev')
-        self.kalkulator.pack(side = 'top', fill = 'both', expand = False)
-        self.eval('tk::PlaceWindow . center')
+        self.kalkulator.pack()
 """
 class predstavitev(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -54,8 +54,7 @@ class ELO(tk.Frame):
             self.error.grid_remove()
             self.sporocila.grid_remove()
             return True
-        else:
-            
+        else:  
             self.bell()
             self.posodobitev.grid_remove()
             self.error.config(text= 'Vpisujte samo številke!')
@@ -73,6 +72,7 @@ class ELO(tk.Frame):
         podatki.rezultat = self.R.get() #--> rezultat belega (oz koliko tock je dobil)
         rezultat_crnega = abs(podatki.rezultat-1)
         if podatki.raiting_beli == '' or podatki.raiting_crni == '':
+
             if podatki.raiting_beli == '' and podatki.raiting_crni =='':
                 manjkajoci = 'belega in črnega'
             elif podatki.raiting_beli == '':
@@ -86,6 +86,7 @@ class ELO(tk.Frame):
             error_close = tk.Button(error, text='OK', command= error.destroy)
             error_close.grid()
         else:
+            #izracun raitinga
             podatki.raiting_beli = int(podatki.raiting_beli)
             podatki.raiting_crni = int(podatki.raiting_crni)
             pricakovan_rezultat_belega = 1/ (1 + 10**Decimal((podatki.raiting_crni-podatki.raiting_beli)/400))
@@ -93,7 +94,6 @@ class ELO(tk.Frame):
 
             podatki.novi_raiting_beli = round(podatki.raiting_beli + podatki.koeficient_beli*(podatki.rezultat - pricakovan_rezultat_belega), 1)
             podatki.novi_raiting_crni = round(podatki.raiting_crni + podatki.koeficient_crni*(rezultat_crnega - pricakovan_rezultat_crnega), 1)
-            #print(podatki.rezultat, pricakovan_rezultat_belega, pricakovan_rezultat_crnega, podatki.novi_raiting_beli, podatki.novi_raiting_crni)
             self.izpis_NR()
 
     def izpis_NR(self): #izpis novih raitingov
