@@ -10,6 +10,9 @@ class kalkulator_aplikacija(tk.Tk):
         self.eval('tk::PlaceWindow . center')
         self.title('ELO raiting kalkulator')
         self.resizable(False, False)
+       
+        self.wm_iconbitmap('./inf_projektna/p.ico')
+
 
         #notebook
         self.kalkulator = ttk.Notebook(self)
@@ -80,6 +83,7 @@ class ELO(tk.Frame):
             else:
                 manjkajoci = 'črnega'
             error = tk.Toplevel()
+            error.wm_iconbitmap('./inf_projektna/p.ico')
             error.title('Error')
             error_m = tk.Label(error, text= f'Vpišite raiting {manjkajoci}!')
             error_m.grid(padx = 50, pady = 5)
