@@ -18,14 +18,14 @@ class kalkulator_aplikacija(tk.Tk):
         #self.kalkulator.add(self.predstavitev, text='predstavitev')
         self.kalkulator.pack(side = 'top', fill = 'both', expand = False)
         self.eval('tk::PlaceWindow . center')
- 
+"""
 class predstavitev(tk.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__()
 
-        labelA = tk.Label(self, text = 'This is on Frame One')
+        labelA = tk.Label(self)
         labelA.grid(column=1, row=1)
-
+"""
 class podatki:
     koeficient_beli = None
     koeficient_crni = None
@@ -47,7 +47,7 @@ class ELO(tk.Frame):
             print('yay')
             self.bell()
             self.posodobitev.grid_remove()
-            self.error.config(text='Mau predolg raiting! Python še ni tk advanced')
+            self.error.config(text='Predolg raiting!')
             self.error.grid()
             self.sporocila.grid()
             return False
@@ -60,7 +60,7 @@ class ELO(tk.Frame):
             
             self.bell()
             self.posodobitev.grid_remove()
-            self.error.config(text= '?? črka != številka ??')
+            self.error.config(text= 'Vpisujte samo številke!')
             self.error.grid()
             self.sporocila.grid()
             return False
