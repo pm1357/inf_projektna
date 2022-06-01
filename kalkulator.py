@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 from decimal import *
-from typing_extensions import IntVar
+#from typing_extensions import IntVar
 import webbrowser
 
 class kalkulator_aplikacija(tk.Tk):
@@ -22,7 +22,6 @@ class kalkulator_aplikacija(tk.Tk):
 class predstavitev(tk.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__()
-
         labelA = tk.Label(self)
         labelA.grid(column=1, row=1)
 """
@@ -44,7 +43,6 @@ class ELO(tk.Frame):
     def validate_raiting_valid(self, str, i):
         #preverja, da je raiting samo stevilke + preverja, če je raiting št predolgs za python za računat
         if int(i)>7:
-            print('yay')
             self.bell()
             self.posodobitev.grid_remove()
             self.error.config(text='Predolg raiting!')
@@ -95,7 +93,7 @@ class ELO(tk.Frame):
 
             podatki.novi_raiting_beli = round(podatki.raiting_beli + podatki.koeficient_beli*(podatki.rezultat - pricakovan_rezultat_belega), 1)
             podatki.novi_raiting_crni = round(podatki.raiting_crni + podatki.koeficient_crni*(rezultat_crnega - pricakovan_rezultat_crnega), 1)
-            print(podatki.rezultat, pricakovan_rezultat_belega, pricakovan_rezultat_crnega, podatki.novi_raiting_beli, podatki.novi_raiting_crni)
+            #print(podatki.rezultat, pricakovan_rezultat_belega, pricakovan_rezultat_crnega, podatki.novi_raiting_beli, podatki.novi_raiting_crni)
             self.izpis_NR()
 
     def izpis_NR(self): #izpis novih raitingov
